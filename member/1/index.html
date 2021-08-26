@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>还秋 | BackRer</title>
+    <meta name="description" content="这里是BackRer的个人主页，目前站长仍在学习中，每天抽出时间来看书学习，励志成为一个技术很牛的程序员。">
+    <meta name="keywords" content="BackRer,个人主页,程序员">
+    <link rel="icon" type="image/ico" href="//gravatar.loli.net/avatar/4cc893d113dd74ceca73f9863f2c5446/">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+
+</head>
+
+<body>
+    <div id="main" class="container">
+        <div class="row my-card justify-content-center">
+            <div class="col-lg-4 photo-bg"></div>
+            <div class="col-lg-8 card">
+                <h1>Hi，我是BackRer，这里是我的主页！</h1>
+                <p>很荣幸您能访问我的网站！ 目前我仍在学习中，每天抽出时间来看书学习，励志成为一个五边形战士(Ps:编程，建模，剪辑等)。
+                </p>
+                <p>
+                    我很喜欢的一句话：<br>因光而遇，也会因光而散<br> 我们终将再次相遇，但不是现在
+
+                </p>
+
+                <p>联系方式:</p>
+                <div class="row">
+                    <button id="kaygb-blog" class="btn btn-primary col-lg-4">QQ</button>
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=3100026750&site=qq&menu=yes" id="kaygb-blog-a" target="_blank" class="btn btn-primary col-lg-4">BLOG</a>
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=3100026750&site=qq&menu=yes" target="_blank" class="btn btn-secondary col-lg-4">微信</a>
+                    <a href="#" target="_blank" id="kaygb-mail-a" class="btn btn-success col-lg-4">此页</a>
+                    <button id="kaygb-mail" class="btn btn-success col-lg-4">此页</button>
+                </div>
+
+
+                <h4 class="mt-4">or, keep your eyes on</h4>
+                <ul class="social mt-1">
+                    <li><a href="https://weibo.com/u/6355799155"><i class="fab fa-weibo " aria-hidden="true"></i></a></li>
+                    <li><a href="https://github.com/BackRer"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fab fa-telegram" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fab fa-zhihu" aria-hidden="true"></i></a></li>
+                </ul>
+                <footer>
+                    <p>Copyright 2021 - Now <a href="https://eas1.cn" target="_blank">秋风</a> <a href="http://xxxx" target="_blank">GitHub挂载</a>
+                        <br> 鸣谢：
+                        <a href="https://www.mianidc.com/?u=kaygb" target="_blank" rel="nofollow">中国免网</a>
+                        <a href="https://console.upyun.com/register/?invite=r1FdZxBoH" target="_blank" rel="nofollow">
+
+                    </p>
+                    </p>
+
+                </footer>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js"></script>
+    <!-- end_aplayer -->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script defer src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kaygb/kaygb@master/layer/layer.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kaygb/kaygb@master/js/v3.js"></script>
+    <script>
+        //弹出一个页面层
+        $('#kaygb-blog').on('click', function() {
+            layer.open({
+                type: 2,
+                title: '还秋',
+                shadeClose: true,
+                shade: false,
+                maxmin: true, //开启最大化最小化按钮
+                area: ['80%', '100%'],
+                content: '//eas1.cn/'
+            });
+        });
+        $('#kaygb-mail').on('click', function() {
+            layer.open({
+                type: 2,
+                title: '还秋',
+                shadeClose: true,
+                shade: false,
+                maxmin: true, //开启最大化最小化按钮
+                area: ['80%', '100%'],
+                content: '//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=i@eas1.cn'
+            });
+        });
+    </script>
+
+</html>
