@@ -1,0 +1,537 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cinght</title>
+<script src="js/jquery.min.js"></script>
+
+
+<style>
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+.animenu__toggle {
+  display: none;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+}
+.animenu__toggle:hover {
+  background-color: #0186ba;
+}
+
+.animenu__toggle__bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  -webkit-transition:  0.15s cubic-bezier(0.75, -0.55, 0.25, 1.55); 
+  -o-transition:  0.15s cubic-bezier(0.75, -0.55, 0.25, 1.55); 
+  transition:  0.15s cubic-bezier(0.75, -0.55, 0.25, 1.55); 
+}
+.animenu__toggle__bar + .animenu__toggle__bar {
+  margin-top: 4px;
+}
+
+.animenu__toggle--active .animenu__toggle__bar {
+  margin: 0;
+  position: absolute;
+}
+.animenu__toggle--active .animenu__toggle__bar:nth-child(1) {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.animenu__toggle--active .animenu__toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+.animenu__toggle--active .animenu__toggle__bar:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.animenu {
+  display: block;
+  
+}
+.animenu ul {
+  padding: 0;
+  list-style: none;
+  font: 0px 'Open Sans', Arial, Helvetica;
+ 
+}
+.animenu li, .animenu a {
+  display: inline-block;
+  font-size: 15px;
+}
+.animenu a {
+  color:#CCC;
+  text-decoration: none;
+}
+
+.animenu__nav {
+  background-color: rgba(17, 17, 17, 0);
+  
+}
+.animenu__nav > li {
+  position: relative;
+  border-right: 1px solid #444444;
+  font-family:微软雅黑;
+}
+.animenu__nav > li > a {
+  padding: 10px 30px;
+  text-transform: uppercase;
+}
+.animenu__nav > li > a:first-child:nth-last-child(2):before {
+  content: "";
+  position: absolute;
+  border: 4px solid transparent;
+  border-bottom: 0;
+  border-top-color: currentColor;
+  top: 50%;
+  margin-top: -2px;
+  right: 10px;
+}
+.animenu__nav > li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  margin: 0;
+}
+.animenu__nav > li:hover > a {
+  color: #fff;
+}
+
+.animenu__nav__child {
+  min-width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  margin: 20px 0 0 0;
+  background-color: #373737;
+  transition: margin .15s, opacity .15s;
+}
+.animenu__nav__child > li {
+  width: 100%;
+  border-bottom: 1px solid #515151;
+}
+.animenu__nav__child > li:first-child > a:after {
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  left: 1em;
+  top: -6px;
+  border: 6px solid transparent;
+  border-top: 0;
+  border-bottom-color: inherit;
+}
+.animenu__nav__child > li:last-child {
+  border: 0;
+}
+.animenu__nav__child a {
+  padding: 10px;
+  width: 100%;
+  border-color: #373737;
+}
+.animenu__nav__child a:hover {
+  background-color: #0186ba;
+  border-color: #0186ba;
+  color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+  .animenu__toggle {
+    display: inline-block;
+  }
+
+  .animenu__nav,
+  .animenu__nav__child {
+    display: none;
+  }
+
+  .animenu__nav {
+    margin: 10px 0;
+  }
+  .animenu__nav > li {
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid #515151;
+  }
+  .animenu__nav > li:last-child {
+    border: 0;
+  }
+  .animenu__nav > li:first-child > a:after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    left: 1em;
+    top: -6px;
+    border: 6px solid transparent;
+    border-top: 0;
+    border-bottom-color: inherit;
+  }
+  .animenu__nav > li > a {
+    width: 100%;
+    padding: 10px;
+    border-color: #111;
+    position: relative;
+  }
+  .animenu__nav a:hover {
+    background-color: #0186ba;
+    border-color: #0186ba;
+    color: #fff;
+  }
+
+  .animenu__nav__child {
+    position: static;
+    background-color: #373737;
+    margin: 0;
+    transition: none;
+    visibility: visible;
+    opacity: 1;
+  }
+  .animenu__nav__child > li:first-child > a:after {
+    content: none;
+  }
+  .animenu__nav__child a {
+    padding-left: 20px;
+    width: 100%;
+  }
+}
+.animenu__nav--open {
+  display: block !important;
+}
+.animenu__nav--open .animenu__nav__child {
+  display: block;
+}
+
+.cs{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	position: fixed; 
+	font-family:yeser;
+	color:#E8847C;
+	
+}
+@font-face{font-family:'yeser';src:url('../fonts/fire.ttf')format('truetype');}
+canvas {
+    padding:0;
+    margin:0;
+}
+div.btnbg {
+    position:fixed;
+    left:0;
+    top:0;
+}
+img#logo {
+    width: 128px;
+    background-size: cover;
+    border-radius: 200px;
+    box-shadow: 0px 0px 40px rgba(63, 81, 181, 0.72);
+    border: 3px solid #00a0ff;
+    opacity: 1;
+    margin: 0 auto;
+    margin-top: 20px;
+	margin-bottom: 20px;
+	transition: all 1.0s;  
+}
+#logo:hover {
+    box-shadow: 0 0 10px #fff;
+    -webkit-box-shadow: 0 0 19px #fff;
+    transform:rotate(360deg);
+    -ms-transform:rotate(360deg); 	/* IE 9 */
+    -moz-transform:rotate(360deg); 	/* Firefox */
+    -webkit-transform:rotate(360deg); /* Safari 和 Chrome */
+    -o-transform:rotate(360deg); 	/* Opera */
+    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+#wrap{margin:20px auto;text-align:center;}#wrap br{display:none;}.btn-slide,.btn-slide2{position:relative;display:inline-block;height:50px;width:200px;line-height:50px;padding:0;border-radius:50px;background:#fdfdfd;border:2px solid #0099cc;margin:10px;transition:.5s;}.btn-slide2{border:2px solid #efa666;}.btn-slide:hover{background-color:#0099cc;}.btn-slide2:hover{background-color:#efa666;}.btn-slide:hover span.circle,.btn-slide2:hover span.circle2{right:100%;margin-right:-45px;background-color:#fdfdfd;color:#0099cc;}.btn-slide2:hover span.circle2{color:#efa666;}.btn-slide:hover span.title,.btn-slide2:hover span.title2{right:40px;opacity:0;}.btn-slide:hover span.title-hover,.btn-slide2:hover span.title-hover2{opacity:1;right:40px;}.btn-slide span.circle,.btn-slide2 span.circle2{display:block;background-color:#0099cc;color:#fff;position:absolute;float:right;margin:5px;line-height:42px;height:40px;width:40px;top:0;right:0;transition:.5s;border-radius:50%;}.btn-slide2 span.circle2{background-color:#efa666;}.btn-slide span.title,.btn-slide span.title-hover,.btn-slide2 span.title2,.btn-slide2 span.title-hover2{position:absolute;right:90px;text-align:center;margin:0 auto;font-size:16px;font-weight:bold;color:#30abd5;transition:.5s;}.btn-slide2 span.title2,.btn-slide2 span.title-hover2{color:#efa666;right:80px;}.btn-slide span.title-hover,.btn-slide2 span.title-hover2{right:80px;opacity:0;}.btn-slide span.title-hover,.btn-slide2 span.title-hover2{color:#fff;}
+
+
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.container{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+}</style>
+</head>
+<body>
+<div id="jsi-cherry-container" class="container"></div>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=3&id=2066706062&auto=1&height=66"></iframe>
+
+<div class="btnbg">
+<div class="cs">
+<div class="htmleaf-container">
+	<nav class="animenu"> 
+	  <button class="animenu__toggle">
+		<span class="animenu__toggle__bar"></span>
+		<span class="animenu__toggle__bar"></span>
+		<span class="animenu__toggle__bar"></span>
+	  </button>
+	  <ul class="animenu__nav" style=" text-align:center">
+		<li>
+		  <a href="http://3261433928.qzone.qq.com/" target="_blank" title="我的空间">我的空间</a>
+		</li>
+		<li>
+		  <a href="http://user.qzone.qq.com/3261433928/334" title="空间留言" target="_blank">空间留言</a>
+		</li>     
+		<li style="border-right: 1px solid #444444; border-right: 0px;">
+		  <a href="http://wpa.qq.com/msgrd?v=3&uin=3261433928" target="_blank" title="联系我吧">联系我吧</a>
+		  
+		</li>
+	  </ul>
+	</nav>
+</div>
+<center>
+
+<br><br>
+<img src="http://q1.qlogo.cn/g?b=qq&nk=3261433928&s=100" id="logo">
+<br><br>
+<hr />
+<br><br>
+<p style="font-size:30px;">夜汣的个人主页<br><br><a href="http://3261433928.qzone.qq.com/" class="btn-slide" target="_blank"> <span class="circle"><i class="fa fa-rocket"></i></span> <span class="title">我的空间</span> <span class="title-hover">QQ Zone</span> </a>
+<a href="http://wpa.qq.com/msgrd?v=3&uin=3261433928" class="btn-slide2" target="_blank"> <span class="circle2"><i class="fa fa-download"></i></span> <span class="title2">联系我吧</span> <span class="title-hover2">Contact QQ</span></a> 
+<p style="font-size:20px;">我热爱一切不彻底的事物<p style="font-size:20px;">琥珀里的时间<p style="font-size:20px;">微暗的火
+<p style="font-size:20px;">一生都在半途而废<p style="font-size:20px;">一生都怀抱热望
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div style="position:absolute;top:90%;left:50px;height:10px;width:600px;color:#E91E63;">
+
+
+</div>
+<script type="text/javascript">
+		document.getElementById('bgaudio').play();
+</script>
+
+
+<script>
+var RENDERER = {
+	INIT_CHERRY_BLOSSOM_COUNT : 30,
+	MAX_ADDING_INTERVAL : 10,
+	
+	init : function(){
+		this.setParameters();
+		this.reconstructMethods();
+		this.createCherries();
+		this.render();
+	},
+	setParameters : function(){
+		this.$container = $('#jsi-cherry-container');
+		this.width = this.$container.width();
+		this.height = this.$container.height();
+		this.context = $('<canvas />').attr({width : this.width, height : this.height}).appendTo(this.$container).get(0).getContext('2d');
+		this.cherries = [];
+		this.maxAddingInterval = Math.round(this.MAX_ADDING_INTERVAL * 1000 / this.width);
+		this.addingInterval = this.maxAddingInterval;
+	},
+	reconstructMethods : function(){
+		this.render = this.render.bind(this);
+	},
+	createCherries : function(){
+		for(var i = 0, length = Math.round(this.INIT_CHERRY_BLOSSOM_COUNT * this.width / 1000); i < length; i++){
+			this.cherries.push(new CHERRY_BLOSSOM(this, true));
+		}
+	},
+	render : function(){
+		requestAnimationFrame(this.render);
+		this.context.clearRect(0, 0, this.width, this.height);
+		
+		this.cherries.sort(function(cherry1, cherry2){
+			return cherry1.z - cherry2.z;
+		});
+		for(var i = this.cherries.length - 1; i >= 0; i--){
+			if(!this.cherries[i].render(this.context)){
+				this.cherries.splice(i, 1);
+			}
+		}
+		if(--this.addingInterval == 0){
+			this.addingInterval = this.maxAddingInterval;
+			this.cherries.push(new CHERRY_BLOSSOM(this, false));
+		}
+	}
+};
+var CHERRY_BLOSSOM = function(renderer, isRandom){
+	this.renderer = renderer;
+	this.init(isRandom);
+};
+CHERRY_BLOSSOM.prototype = {
+	FOCUS_POSITION : 300,
+	FAR_LIMIT : 600,
+	MAX_RIPPLE_COUNT : 100,
+	RIPPLE_RADIUS : 100,
+	SURFACE_RATE : 0.5,
+	SINK_OFFSET : 20,
+	
+	init : function(isRandom){
+		this.x = this.getRandomValue(-this.renderer.width, this.renderer.width);
+		this.y = isRandom ? this.getRandomValue(0, this.renderer.height) : this.renderer.height * 1.5;
+		this.z = this.getRandomValue(0, this.FAR_LIMIT);
+		this.vx = this.getRandomValue(-2, 2);
+		this.vy = -2;
+		this.theta = this.getRandomValue(0, Math.PI * 2);
+		this.phi = this.getRandomValue(0, Math.PI * 2);
+		this.psi = 0;
+		this.dpsi = this.getRandomValue(Math.PI / 600, Math.PI / 300);
+		this.opacity = 0;
+		this.endTheta = false;
+		this.endPhi = false;
+		this.rippleCount = 0;
+		
+		var axis = this.getAxis(),
+			theta = this.theta + Math.ceil(-(this.y + this.renderer.height * this.SURFACE_RATE) / this.vy) * Math.PI / 500;
+		theta %= Math.PI * 2;
+		
+		this.offsetY = 40 * ((theta <= Math.PI / 2 || theta >= Math.PI * 3 / 2) ? -1 : 1);
+		this.thresholdY = this.renderer.height / 2 + this.renderer.height * this.SURFACE_RATE * axis.rate;
+		this.entityColor = this.renderer.context.createRadialGradient(0, 40, 0, 0, 40, 80);
+		this.entityColor.addColorStop(0, 'hsl(330, 70%, ' + 50 * (0.3 + axis.rate) + '%)');
+		this.entityColor.addColorStop(0.05, 'hsl(330, 40%,' + 55 * (0.3 + axis.rate) + '%)');
+		this.entityColor.addColorStop(1, 'hsl(330, 20%, ' + 70 * (0.3 + axis.rate) + '%)');
+		this.shadowColor = this.renderer.context.createRadialGradient(0, 40, 0, 0, 40, 80);
+		this.shadowColor.addColorStop(0, 'hsl(330, 40%, ' + 30 * (0.3 + axis.rate) + '%)');
+		this.shadowColor.addColorStop(0.05, 'hsl(330, 40%,' + 30 * (0.3 + axis.rate) + '%)');
+		this.shadowColor.addColorStop(1, 'hsl(330, 20%, ' + 40 * (0.3 + axis.rate) + '%)');
+	},
+	getRandomValue : function(min, max){
+		return min + (max - min) * Math.random();
+	},
+	getAxis : function(){
+		var rate = this.FOCUS_POSITION / (this.z + this.FOCUS_POSITION),
+			x = this.renderer.width / 2 + this.x * rate,
+			y = this.renderer.height / 2 - this.y * rate;
+		return {rate : rate, x : x, y : y};
+	},
+	renderCherry : function(context, axis){
+		context.beginPath();
+		context.moveTo(0, 40);
+		context.bezierCurveTo(-60, 20, -10, -60, 0, -20);
+		context.bezierCurveTo(10, -60, 60, 20, 0, 40);
+		context.fill();
+		
+		for(var i = -4; i < 4; i++){
+			context.beginPath();
+			context.moveTo(0, 40);
+			context.quadraticCurveTo(i * 12, 10, i * 4, -24 + Math.abs(i) * 2);
+			context.stroke();
+		}
+	},
+	render : function(context){
+		var axis = this.getAxis();
+		
+		if(axis.y == this.thresholdY && this.rippleCount < this.MAX_RIPPLE_COUNT){
+			context.save();
+			context.lineWidth = 2;
+			context.strokeStyle = 'hsla(0, 0%, 100%, ' + (this.MAX_RIPPLE_COUNT - this.rippleCount) / this.MAX_RIPPLE_COUNT + ')';
+			context.translate(axis.x + this.offsetY * axis.rate * (this.theta <= Math.PI ? -1 : 1), axis.y);
+			context.scale(1, 0.3);
+			context.beginPath();
+			context.arc(0, 0, this.rippleCount / this.MAX_RIPPLE_COUNT * this.RIPPLE_RADIUS * axis.rate, 0, Math.PI * 2, false);
+			context.stroke();
+			context.restore();
+			this.rippleCount++;
+		}
+		if(axis.y < this.thresholdY || (!this.endTheta || !this.endPhi)){
+			if(this.y <= 0){
+				this.opacity = Math.min(this.opacity + 0.01, 1);
+			}
+			context.save();
+			context.globalAlpha = this.opacity;
+			context.fillStyle = this.shadowColor;
+			context.strokeStyle = 'hsl(330, 30%,' + 40 * (0.3 + axis.rate) + '%)';
+			context.translate(axis.x, Math.max(axis.y, this.thresholdY + this.thresholdY - axis.y));
+			context.rotate(Math.PI - this.theta);
+			context.scale(axis.rate * -Math.sin(this.phi), axis.rate);
+			context.translate(0, this.offsetY);
+			this.renderCherry(context, axis);
+			context.restore();
+		}
+		context.save();
+		context.fillStyle = this.entityColor;
+		context.strokeStyle = 'hsl(330, 40%,' + 70 * (0.3 + axis.rate) + '%)';
+		context.translate(axis.x, axis.y + Math.abs(this.SINK_OFFSET * Math.sin(this.psi) * axis.rate));
+		context.rotate(this.theta);
+		context.scale(axis.rate * Math.sin(this.phi), axis.rate);
+		context.translate(0, this.offsetY);
+		this.renderCherry(context, axis);
+		context.restore();
+		
+		if(this.y <= -this.renderer.height / 4){
+			if(!this.endTheta){
+				for(var theta = Math.PI / 2, end = Math.PI * 3 / 2; theta <= end; theta += Math.PI){
+					if(this.theta < theta && this.theta + Math.PI / 200 > theta){
+						this.theta = theta;
+						this.endTheta = true;
+						break;
+					}
+				}
+			}
+			if(!this.endPhi){
+				for(var phi = Math.PI / 8, end = Math.PI * 7 / 8; phi <= end; phi += Math.PI * 3 / 4){
+					if(this.phi < phi && this.phi + Math.PI / 200 > phi){
+						this.phi = Math.PI / 8;
+						this.endPhi = true;
+						break;
+					}
+				}
+			}
+		}
+		if(!this.endTheta){
+			if(axis.y == this.thresholdY){
+				this.theta += Math.PI / 200 * ((this.theta < Math.PI / 2 || (this.theta >= Math.PI && this.theta < Math.PI * 3 / 2)) ? 1 : -1);
+			}else{
+				this.theta += Math.PI / 500;
+			}
+			this.theta %= Math.PI * 2;
+		}
+		if(this.endPhi){
+			if(this.rippleCount == this.MAX_RIPPLE_COUNT){
+				this.psi += this.dpsi;
+				this.psi %= Math.PI * 2;
+			}
+		}else{
+			this.phi += Math.PI / ((axis.y == this.thresholdY) ? 200 : 500);
+			this.phi %= Math.PI;
+		}
+		if(this.y <= -this.renderer.height * this.SURFACE_RATE){
+			this.x += 2;
+			this.y = -this.renderer.height * this.SURFACE_RATE;
+		}else{
+			this.x += this.vx;
+			this.y += this.vy;
+		}
+		return this.z > -this.FOCUS_POSITION && this.z < this.FAR_LIMIT && this.x < this.renderer.width * 1.5;
+	}
+};
+$(function(){
+	RENDERER.init();
+});</script>
+<audio autoplay="autoplay">
+<source src="http://music.163.com/outchain/player?type=2&id=1433470767&auto=1&height=66" type="audio/mpg">
+</audio>
+</body>
+</html>
